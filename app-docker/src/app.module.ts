@@ -3,15 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Item } from './entitys/item.entity';
-import * as dotenv from 'dotenv';
 
-dotenv.config();
+require('dotenv').config();
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',        
-      host: 'localhost',
+      host: process.env.DB_HOST,
       port: 3306,           
       username: process.env.DB_USERNAME,
       password: process.env.PASSWORD,
